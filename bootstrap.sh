@@ -26,18 +26,19 @@ mkfs.ext4 /dev/sdb2
 # swap
 mkswap /dev/sdb3
 
+
 # mount and copy /
-mount /dev/sdb2 /mnt  && rsync -axvu / /mnt
+mount /dev/sdb2 /mnt  && rsync -axvAX / /mnt
 
 
 #mount boot
-mount /dev/sdb1 /mnt/boot && rsync -axvu /boot/ /mnt/boot
+mount /dev/sdb1 /mnt/boot && rsync -axvAX /boot/ /mnt/boot
 
 
 ls -la /mnt/boot
 echo "------------------------------------------------------------"
 lsblk
-echo "------------------------------------------------------------"
+echo "------------------------ df -h ------------------------------------"
 df -h
 
 echo "--------------------END SCRIPT------------------------------"
@@ -46,12 +47,14 @@ echo "--------------------END SCRIPT------------------------------"
 # for i in /proc/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i; done
 
 # chroot /mnt/
-# blkid /dev/sdb* >> /etc/fstab
+
+
+#grub2-mkconfig -o /boot/grub2/grub.cfg
+# cd /boot ; for i in `ls initramfs-*img`; do dracut -v $i `echo $i|sed "s/initramfs-//g; s/.img//g"` --force; done
+#### blkid /dev/sdb* >> /etc/fstab
 # lsblk -f /dev/sdb |sed 's/\[SWAP]/swap /g'|awk '/(-)/{printf"UUID=%-36s %-23s %-7s defaults   0 0\n", $3, ($4==""?mnt""NR:$4), $2}'>> /etc/fstab
 # fix fstab : delete old lines and fix swap line
 # vim /etc/fstab
-
-#grub2-mkconfig -o /boot/grub2/grub.cfg
 #grub2-install /dev/sdb
 #exit
 
