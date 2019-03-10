@@ -29,7 +29,7 @@ mkswap /dev/sdb3
 
 # mount and copy /
 mount /dev/sdb2 /mnt  && rsync -axvAX / /mnt
-
+#For xfs use like  xfsdump -J - /dev/vg_root/lv_root | xfsrestore -J - /mnt
 
 #mount boot
 mount /dev/sdb1 /mnt/boot && rsync -axvAX /boot/ /mnt/boot
@@ -51,7 +51,7 @@ echo "--------------------END SCRIPT------------------------------"
 
 #grub2-mkconfig -o /boot/grub2/grub.cfg
 # cd /boot ; for i in `ls initramfs-*img`; do dracut -v $i `echo $i|sed "s/initramfs-//g; s/.img//g"` --force; done
-#### blkid /dev/sdb* >> /etc/fstab
+####
 # lsblk -f /dev/sdb |sed 's/\[SWAP]/swap /g'|awk '/(-)/{printf"UUID=%-36s %-23s %-7s defaults   0 0\n", $3, ($4==""?mnt""NR:$4), $2}'>> /etc/fstab
 # fix fstab : delete old lines and fix swap line
 # vim /etc/fstab
