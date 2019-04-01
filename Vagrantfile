@@ -14,21 +14,21 @@ MACHINES = {
             :size => 10240,
             :port => 1
         },
-        :sata2 => {
-            :dfile => home + '/VirtualBox VMs/sata2.vdi',
-            :size => 2048, # Megabytes
-            :port => 2
-        },
-        :sata3 => {
-            :dfile => home + '/VirtualBox VMs/sata3.vdi',
-            :size => 1024, # Megabytes
-            :port => 3
-        },
-        :sata4 => {
-            :dfile => home + '/VirtualBox VMs/sata4.vdi',
-            :size => 1024,
-            :port => 4
-        }
+        #:sata2 => {
+        #    :dfile => home + '/VirtualBox VMs/sata2.vdi',
+        #    :size => 2048, # Megabytes
+        #    :port => 2
+        #},
+        #:sata3 => {
+        #    :dfile => home + '/VirtualBox VMs/sata3.vdi',
+        #    :size => 1024, # Megabytes
+        #    :port => 3
+        #},
+        #:sata4 => {
+        #    :dfile => home + '/VirtualBox VMs/sata4.vdi',
+        #    :size => 1024,
+        #    :port => 4
+        #}
     }
   },
 }

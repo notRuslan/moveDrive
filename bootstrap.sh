@@ -49,14 +49,14 @@ echo "--------------------END SCRIPT------------------------------"
 # chroot /mnt/
 
 
-#grub2-mkconfig -o /boot/grub2/grub.cfg
+# grub2-mkconfig -o /boot/grub2/grub.cfg
 # cd /boot ; for i in `ls initramfs-*img`; do dracut -v $i `echo $i|sed "s/initramfs-//g; s/.img//g"` --force; done
 ####
 # lsblk -f /dev/sdb |sed 's/\[SWAP]/swap /g'|awk '/(-)/{printf"UUID=%-36s %-23s %-7s defaults   0 0\n", $3, ($4==""?mnt""NR:$4), $2}'>> /etc/fstab
 # fix fstab : delete old lines and fix swap line
 # vim /etc/fstab
-#grub2-install /dev/sdb
-#exit
+# grub2-install /dev/sdb
+# exit
 
 # At the VirtualBox boot press F12 and choose second drive
 
